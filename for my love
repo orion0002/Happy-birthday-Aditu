@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Baby Girl 💖</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .container {
+    position: relative;
+    width: 70%;
+    max-width: 700px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 25px rgba(255, 170, 200, 0.6);
+    border-radius: 20px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    animation: fadeIn 1s ease;
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  .slide {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .slide.active {
+    display: block;
+    opacity: 1;
+  }
+
+  .slide img {
+    width: 160px;
+    height: 160px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.8);
+    margin-top: 10px;
+  }
+
+  h2 {
+    color: white;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .next-btn {
+    background: #ff4fb3;
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 20px;
+    transition: 0.3s;
+  }
+
+  .next-btn:hover {
+    background: #ff80cc;
+    transform: scale(1.05);
+  }
+
+  .hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .heart {
+    position: absolute;
+    color: #ff7fbf;
+    font-size: 1.5rem;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.8;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(100vh) scale(0.8); opacity: 1; }
+    100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+  <div class="hearts" id="hearts"></div>
+
+  <div class="container">
+    <div class="slide active">
+      <h2>A little thing I made for my baby girl 💗</h2>
+      <img src="goma-cat.gif" alt="cute cat">
+      <button class="next-btn" onclick="nextSlide()">NEXT ✨</button>
+    </div>
+
+    <div class="slide">
+      <h2>You make my world brighter every day 🌸</h2>
+      <img src="bright-day.gif" alt="cute gif">
+      <button class="next-btn" onclick="nextSlide()">NEXT 💖</button>
+    </div>
+
+    <div class="slide">
+      <h2>Even after I bother you so much, you still always make me feel loved and safe. Thank you so much for everything you do for me 💞</h2>
+      <img src="thankyou.gif" alt="cute gif">
+      <button class="next-btn" onclick="nextSlide()">NEXT 💖</button>
+    </div>
+
+    <div class="slide">
+      <h2>We’ve been together for almost 3 years — and yes, I know you’ll say “not really” because we didn’t talk much the first year, but I’ll still count every moment you’ve been in my life 💫</h2>
+      <img src="together.gif" alt="cute gif">
+      <button class="next-btn" onclick="nextSlide()">NEXT 💖</button>
+    </div>
+
+    <div class="slide">
+      <h2>I want to be the first one every year to wish you on your birthday... and yes, I’m jealous, I admit it 😆💗</h2>
+      <img src="birthday-cute.gif" alt="birthday gif">
+      <button class="next-btn" onclick="nextSlide()">NEXT 💖</button>
+    </div>
+
+    <div class="slide">
+      <h2>Happy Birthday, my love 🎂💞</h2>
+      <img src="happy-birthday.jpg" alt="birthday gif">
+      <button class="next-btn" onclick="restart()">AGAIN 🔁</button>
+    </div>
+  </div>
+
+  <audio id="bgMusic" src="blue.mp3"></audio>
+
+  <script>
+    // Floating hearts
+    const hearts = document.getElementById('hearts');
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 4 + Math.random() * 3 + 's';
+      heart.textContent = '💖';
+      hearts.appendChild(heart);
+      setTimeout(() => heart.remove(), 7000);
+    }
+    setInterval(createHeart, 300);
+
+    // Slides + Music
+    let current = 0;
+    const slides = document.querySelectorAll('.slide');
+    const music = document.getElementById('bgMusic');
+
+    function nextSlide() {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+      if (music.paused) music.play();
+    }
+
+    function restart() {
+      slides[current].classList.remove('active');
+      current = 0;
+      slides[current].classList.add('active');
+    }
+  </script>
+</body>
+</html>
