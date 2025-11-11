@@ -119,7 +119,7 @@
 
     <div class="slide">
       <h2>Even after I bother you so much, you still always make me feel loved and safe. Thank you so much for everything you do for me 💞</h2>
-      <img src="thank-you.gif" alt="cute gif">
+     <img src="thankyou.gif" alt="cute gif">
       <button class="next-btn" onclick="nextSlide()">NEXT 💖</button>
     </div>
 
@@ -176,5 +176,18 @@
       slides[current].classList.add('active');
     }
   </script>
+  <script>
+  const music = document.getElementById('bgMusic');
+  const nextButton = document.getElementById('next');
+
+  nextButton.addEventListener('click', () => {
+    if (music.paused) {
+      music.volume = 0.6;
+      music.play().catch(err => console.log('Autoplay blocked:', err));
+    }
+
+    // existing slide change code here
+  });
+</script>
 </body>
 </html>
