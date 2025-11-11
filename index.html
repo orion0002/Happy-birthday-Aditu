@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For My Baby Girl 💖</title>
+
 <style>
   body {
     margin: 0;
@@ -11,7 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
+    background: linear-gradient(135deg, #ffe0f0 0%, #ffc2e0 100%);
     overflow: hidden;
     font-family: 'Poppins', sans-serif;
   }
@@ -20,12 +21,12 @@
     position: relative;
     width: 70%;
     max-width: 700px;
-    background: rgba(255, 255, 255, 0.15);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 0 25px rgba(255, 170, 200, 0.6);
-    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 25px rgba(255, 150, 190, 0.7);
+    border-radius: 25px;
     padding: 40px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     text-align: center;
     animation: fadeIn 1s ease;
   }
@@ -47,17 +48,18 @@
   }
 
   .slide img {
-    width: 160px;
-    height: 160px;
+    width: 180px;
+    height: 180px;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(255,255,255,0.8);
-    margin-top: 10px;
+    margin-top: 15px;
   }
 
   h2 {
     color: white;
     margin-bottom: 20px;
     font-weight: 500;
+    text-shadow: 0 0 10px rgba(255,255,255,0.4);
   }
 
   .next-btn {
@@ -74,7 +76,7 @@
 
   .next-btn:hover {
     background: #ff80cc;
-    transform: scale(1.05);
+    transform: scale(1.08);
   }
 
   .hearts {
@@ -102,6 +104,7 @@
 </style>
 </head>
 <body>
+
   <div class="hearts" id="hearts"></div>
 
   <div class="container">
@@ -118,8 +121,8 @@
     </div>
 
     <div class="slide">
-      <h2>Even after I bother you so much, you still always make me feel loved and safe. Thank you so much for everything you do for me 💞</h2>
-      <img src="thank-you.gif" alt="cute gif">
+      <h2>Even after I bother you so much, you still always make me feel loved and safe. Thank you for everything you do for me 💞</h2>
+      <img src="thank-you.gif" alt="thank you gif">
       <button class="next-btn" onclick="nextSlide()">NEXT 💖</button>
     </div>
 
@@ -137,12 +140,13 @@
 
     <div class="slide">
       <h2>Happy Birthday, my love 🎂💞</h2>
-      <img src="happy-birthday.jpg" alt="birthday gif">
+      <img src="happy-birthday.jpg" alt="birthday image">
       <button class="next-btn" onclick="restart()">AGAIN 🔁</button>
     </div>
   </div>
 
-  <audio id="bgMusic" src="blue.mp3" loop></audio>
+  <!-- Background Music -->
+  <audio id="bgMusic" src="blue,mp3" loop preload="auto"></audio>
 
   <script>
     // Floating hearts
@@ -158,7 +162,7 @@
     }
     setInterval(createHeart, 300);
 
-    // Slides + Music
+    // Slides and Music
     let current = 0;
     const slides = document.querySelectorAll('.slide');
     const music = document.getElementById('bgMusic');
@@ -168,10 +172,10 @@
       current = (current + 1) % slides.length;
       slides[current].classList.add('active');
 
-      // Start music when slides begin
+      // Play music on first click (fixes autoplay restriction)
       if (music.paused) {
         music.volume = 0.6;
-        music.play().catch(err => console.log('Autoplay blocked:', err));
+        music.play().catch(err => console.log("Autoplay blocked:", err));
       }
     }
 
@@ -181,5 +185,6 @@
       slides[current].classList.add('active');
     }
   </script>
+
 </body>
 </html>
